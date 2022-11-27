@@ -1,5 +1,5 @@
 <?php
-require 'database.php';
+require 'func/database.php';
 $id = 0;
 
 if (!empty($_GET['id'])) {
@@ -13,11 +13,11 @@ if (!empty($_POST)) {
     // delete data
     $pdo = Database::connect();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "DELETE FROM teste  WHERE id = ?";
+    $sql = "DELETE FROM users WHERE id = ?";
     $q = $pdo->prepare($sql);
     $q->execute(array($id));
     Database::disconnect();
-    header("Location: user data.php");
+    header("Location: users.php");
 }
 ?>
 
@@ -30,26 +30,26 @@ if (!empty($_POST)) {
 </head>
 
 <body>
-    <h2 align="center">IFGAccess</h2>
 
-    <div class="container">
-
-        <div class="span10 offset1">
+    <div class="container-fluid">
+        <br>
+        <div align="center" class="span10 offset1">
             <div class="row">
-                <h3 align="center">Delete User</h3>
+                <h3 >Deletar Usuário</h3>
             </div>
 
-            <form class="form-horizontal" action="user data delete page.php" method="post">
+            <form class="form-horizontal" action="deleteUser.php" method="post">
                 <input type="hidden" name="id" value="<?php echo $id; ?>" />
-                <p class="alert alert-error">Are you sure to delete ?</p>
+                <p class="alert alert-error">Are you sure to delete?</p>
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-danger">Yes</button>
-                    <a class="btn" href="user data.php">No</a>
+                    <button type="submit" class="btn btn-danger">Sim, deletar</button>
+                    <a class="btn" href="users.php">Não</a>
                 </div>
             </form>
         </div>
 
     </div> <!-- /container -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 
 </html>

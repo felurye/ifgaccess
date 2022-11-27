@@ -9,16 +9,16 @@
     if ( !empty($_POST)) {
         // keep track post values
         $name = $_POST['name'];
-		$id = $_POST['id'];
-		$gender = $_POST['gender'];
+        $tag = $_POST['tag'];
+		$enrollment = $_POST['enrollment'];
         $email = $_POST['email'];
-        $mobile = $_POST['mobile'];
+        $phone = $_POST['phone'];
          
         $pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "UPDATE teste  set name = ?, gender =?, email =?, mobile =? WHERE id = ?";
+		$sql = "UPDATE users set name = ?, enrollment =?, email =?, phone =? WHERE id = ?";
 		$q = $pdo->prepare($sql);
-		$q->execute(array($name,$gender,$email,$mobile,$id));
+		$q->execute(array($name,$enrollment,$email,$phone,$id));
 		Database::disconnect();
-		header("Location: user data.php");
+		header("Location: ../users.php");
     }

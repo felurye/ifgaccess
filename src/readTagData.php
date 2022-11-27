@@ -1,5 +1,5 @@
 <?php
-require 'database.php';
+require 'func/database.php';
 $id = null;
 if (!empty($_GET['id'])) {
 	$id = $_REQUEST['id'];
@@ -7,7 +7,7 @@ if (!empty($_GET['id'])) {
 
 $pdo = Database::connect();
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$sql = "SELECT * FROM teste where id = ?";
+$sql = "SELECT * FROM users where tag = ?";
 $q = $pdo->prepare($sql);
 $q->execute(array($id));
 $data = $q->fetch(PDO::FETCH_ASSOC);
@@ -15,12 +15,12 @@ Database::disconnect();
 
 $msg = null;
 if (null == $data['name']) {
-	$msg = "The ID of your Card / KeyChain is not registered !!!";
-	$data['id'] = $id;
+	$msg = "A tag aproximada não está cadastrada!!!";
+	$data['tag'] = $id;
 	$data['name'] = "--------";
-	$data['gender'] = "--------";
+	$data['enrollment'] = "--------";
 	$data['email'] = "--------";
-	$data['mobile'] = "--------";
+	$data['phone'] = "--------";
 } else {
 	$msg = null;
 }
@@ -36,9 +36,9 @@ if (null == $data['name']) {
 <body>
 	<div>
 		<form>
-			<table width="452" border="1" bordercolor="#10a0c5" align="center" cellpadding="0" cellspacing="1" bgcolor="#000" style="padding: 2px">
+			<table width="452" border="1" bordercolor="#157347" align="center" cellpadding="0" cellspacing="1" bgcolor="#000" style="padding: 2px">
 				<tr>
-					<td height="40" align="center" bgcolor="#10a0c5">
+					<td height="40" align="center" bgcolor="#157347">
 						<font color="#FFFFFF">
 							<b>User Data</b>
 						</font>
@@ -48,9 +48,9 @@ if (null == $data['name']) {
 					<td bgcolor="#f9f9f9">
 						<table width="452" border="0" align="center" cellpadding="5" cellspacing="0">
 							<tr>
-								<td width="113" align="left" class="lf">ID</td>
+								<td width="113" align="left" class="lf">Tag</td>
 								<td style="font-weight:bold">:</td>
-								<td align="left"><?php echo $data['id']; ?></td>
+								<td align="left"><?php echo $data['tag']; ?></td>
 							</tr>
 							<tr bgcolor="#f2f2f2">
 								<td align="left" class="lf">Name</td>
@@ -58,9 +58,9 @@ if (null == $data['name']) {
 								<td align="left"><?php echo $data['name']; ?></td>
 							</tr>
 							<tr>
-								<td align="left" class="lf">Gender</td>
+								<td align="left" class="lf">Matrícula</td>
 								<td style="font-weight:bold">:</td>
-								<td align="left"><?php echo $data['gender']; ?></td>
+								<td align="left"><?php echo $data['enrollment']; ?></td>
 							</tr>
 							<tr bgcolor="#f2f2f2">
 								<td align="left" class="lf">Email</td>
@@ -68,9 +68,9 @@ if (null == $data['name']) {
 								<td align="left"><?php echo $data['email']; ?></td>
 							</tr>
 							<tr>
-								<td align="left" class="lf">Mobile Number</td>
+								<td align="left" class="lf">Telefone</td>
 								<td style="font-weight:bold">:</td>
-								<td align="left"><?php echo $data['mobile']; ?></td>
+								<td align="left"><?php echo $data['phone']; ?></td>
 							</tr>
 						</table>
 					</td>
@@ -79,6 +79,7 @@ if (null == $data['name']) {
 		</form>
 	</div>
 	<p align="center" style="color:red;"><?php echo $msg; ?></p>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 
 </html>

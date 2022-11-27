@@ -4,19 +4,19 @@
  
     if ( !empty($_POST)) {
         // keep track post values
+		$tag = $_POST['tag'];
         $name = $_POST['name'];
-		$id = $_POST['id'];
-		$gender = $_POST['gender'];
+		$enrollment = $_POST['enrollment'];
         $email = $_POST['email'];
-        $mobile = $_POST['mobile'];
+        $phone = $_POST['phone'];
         
 		// insert data
         $pdo = Database::connect();
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "INSERT INTO teste (name,id,gender,email,mobile) values(?, ?, ?, ?, ?)";
+		$sql = "INSERT INTO users (tag, name, enrollment, email, phone) values(?, ?, ?, ?, ?)";
 		$q = $pdo->prepare($sql);
-		$q->execute(array($name,$id,$gender,$email,$mobile));
+		$q->execute(array($tag,$name,$enrollment,$email,$phone));
 		Database::disconnect();
-		header("Location: user data.php");
+		header("Location: ../users.php");
     }
 ?>

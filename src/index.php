@@ -8,81 +8,37 @@ file_put_contents('UIDContainer.php', $Write);
 <html>
 
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta charset="utf-8">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<script src="js/bootstrap.min.js"></script>
-	<style>
-		html {
-			font-family: Arial;
-			display: inline-block;
-			margin: 0px auto;
-			text-align: center;
-		}
-
-		ul.topnav {
-			list-style-type: none;
-			margin: auto;
-			padding: 0;
-			overflow: hidden;
-			background-color: #4CAF50;
-			width: 70%;
-		}
-
-		ul.topnav li {
-			float: left;
-		}
-
-		ul.topnav li a {
-			display: block;
-			color: white;
-			text-align: center;
-			padding: 14px 16px;
-			text-decoration: none;
-		}
-
-		ul.topnav li a:hover:not(.active) {
-			background-color: #3e8e41;
-		}
-
-		ul.topnav li a.active {
-			background-color: #333;
-		}
-
-		ul.topnav li.right {
-			float: right;
-		}
-
-		@media screen and (max-width: 600px) {
-
-			ul.topnav li.right,
-			ul.topnav li {
-				float: none;
-			}
-		}
-
-		img {
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-		}
-	</style>
-
+	<?php include_once 'inc/head.html'; ?>
 	<title>Home : IFGAccess</title>
 </head>
 
 <body>
-	<h2>IFGAccess</h2>
-	<ul class="topnav">
-		<li><a class="active" href="index.php">Home</a></li>
-		<li><a href="user data.php">User Data</a></li>
-		<li><a href="registration.php">Registration</a></li>
-		<li><a href="read tag.php">Read Tag ID</a></li>
-	</ul>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class=" container">
+		<a class="navbar-brand" href="index.php">
+			<img src="img/white-logo.png" alt="Logo" width="100" class="d-inline-block align-text-top">
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="users.php">Usuários</a></li>
+				<li class="nav-item"><a class="nav-link" href="registration.php">Cadastrar</a></li>
+				<li class="nav-item"><a class="nav-link" href="readTag.php">Consultar</a></li>
+			</ul>
+		</div>
+		</div>
+	</nav>
+
 	<br>
-	<h3>Welcome to IFGAccess</h3>
+	<h3 align="center">Welcome to IFGAccess</h3>
 
 	<img src="home ok ok.jpg" alt="" style="width:55%;">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 
 </html>
