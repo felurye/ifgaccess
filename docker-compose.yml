@@ -1,0 +1,25 @@
+version: "3"
+services:
+    php:
+        build: .
+        container_name: ifgaccess-apache
+        volumes:
+            - ./src/:/var/www/html
+        ports:
+            - "80:80"
+            - "443:443"
+        links:
+            - mysql
+
+    mysql:
+        image: mysql:latest
+        container_name: ifgaccess-db
+        volumes:
+            - /var/lib/mysql
+        environment:
+            MYSQL_DATABASE: ifgaccess
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_PASSWORD: root
+            MYSQL_USER: ifgaccess
+        ports:
+            - "3306:3306"
