@@ -27,6 +27,7 @@ file_put_contents('UIDContainer.php', $Write);
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
 				<li class="nav-item"><a class="nav-link" href="users.php">Usuários</a></li>
+				<li class="nav-item"><a class="nav-link" href="access.php">Acessos</a></li>
 				<li class="nav-item"><a class="nav-link" href="registration.php">Cadastrar</a></li>
 				<li class="nav-item"><a class="nav-link" href="readTag.php">Consultar</a></li>
 			</ul>
