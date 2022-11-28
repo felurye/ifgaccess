@@ -99,7 +99,7 @@ void loop() {
     UIDresultSend = StrUID;
    
     //Post Data
-    postData = "UIDresult=" + UIDresultSend;
+    postData = "UIDresult=" + UIDresultSend + "&room=S405";
   
     http.begin(wifiClient, "http://192.168.1.19/getUID.php");  //Specify request destination
     http.addHeader("Content-Type", "application/x-www-form-urlencoded"); //Specify content-type header
@@ -107,7 +107,16 @@ void loop() {
     int httpCode = http.POST(postData);   //Send the request
     String payload = http.getString();    //Get the response payload
   
-    // Serial.println(UIDresultSend);
+    Serial.println(UIDresultSend);
+    Serial.println(httpCode);   //Print HTTP return code
+    Serial.println(payload);    //Print request response payload
+
+    http.begin(wifiClient, "http://192.168.1.19/func/createAccess.php?" + postData);  //Specify request destination
+    http.addHeader("Content-Type", "application/x-www-form-urlencoded"); //Specify content-type header
+   
+    httpCode = http.POST(postData);   //Send the request
+    payload = http.getString();    //Get the response payload
+  
     Serial.println(httpCode);   //Print HTTP return code
     Serial.println(payload);    //Print request response payload
     

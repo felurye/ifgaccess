@@ -1,5 +1,5 @@
 <?php
-$Write = "<?php $" . "UIDresult=''; " . "echo $" . "UIDresult;" . " ?>";
+$Write = "<?php $" . "UIDresult='" . $UIDresult . "'; " . "$" . "room='" . $room . "'; " . "echo $" . "room;" . "echo $" . "UIDresult;" . " ?>";
 file_put_contents('UIDContainer.php', $Write);
 ?>
 
@@ -134,7 +134,7 @@ file_put_contents('UIDContainer.php', $Write);
 						document.getElementById("show_user_data").innerHTML = this.responseText;
 					}
 				};
-				xmlhttp.open("GET", "readTagData.php?id=" + str, true);
+				xmlhttp.open("GET", "readTagData.php?tag=" + str, true);
 				xmlhttp.send();
 			}
 		}

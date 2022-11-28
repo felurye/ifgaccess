@@ -1,5 +1,5 @@
 <?php
-$Write = "<?php $" . "UIDresult=''; " . "echo $" . "UIDresult;" . " ?>";
+$Write = "<?php $" . "UIDresult='" . $UIDresult . "'; " . "$" . "room='" . $room . "'; " . "echo $" . "room;" . "echo $" . "UIDresult;" . " ?>";
 file_put_contents('UIDContainer.php', $Write);
 ?>
 
