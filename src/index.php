@@ -1,6 +1,6 @@
 <?php
-$Write = "<?php $" . "UIDresult='" . $UIDresult . "'; " . "$" . "room='" . $room . "'; " . "echo $" . "room;" . "echo $" . "UIDresult;" . " ?>";
-file_put_contents('UIDContainer.php', $Write);
+$Write = "<?php $" . "tagResult='" . $tagResult . "'; " . "echo  $" . "tagResult;" . " ?>";
+file_put_contents('tagContainer.php', $Write);
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ file_put_contents('UIDContainer.php', $Write);
 				<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
 				<li class="nav-item"><a class="nav-link" href="users.php">Usuários</a></li>
 				<li class="nav-item"><a class="nav-link" href="access.php">Acessos</a></li>
-				<li class="nav-item"><a class="nav-link" href="registration.php">Cadastrar</a></li>
+				<li class="nav-item"><a class="nav-link" href="createUser.php">Cadastrar</a></li>
 				<li class="nav-item"><a class="nav-link" href="readTag.php">Consultar</a></li>
 			</ul>
 		</div>

@@ -1,6 +1,6 @@
 <?php
-$Write = "<?php $" . "UIDresult='" . $UIDresult . "'; " . "$" . "room='" . $room . "'; " . "echo $" . "room;" . "echo $" . "UIDresult;" . " ?>";
-file_put_contents('UIDContainer.php', $Write);
+$Write = "<?php $" . "tagResult='" . $tagResult . "'; " . "echo  $" . "tagResult;" . " ?>";
+file_put_contents('tagContainer.php', $Write);
 ?>
 
 <!DOCTYPE html>
@@ -11,9 +11,9 @@ file_put_contents('UIDContainer.php', $Write);
 	<?php include_once 'inc/head.html'; ?>
 	<script>
 		$(document).ready(function() {
-			$("#getUID").load("UIDContainer.php");
+			$("#getTag").load("tagContainer.php");
 			setInterval(function() {
-				$("#getUID").load("UIDContainer.php");
+				$("#getTag").load("tagContainer.php");
 			}, 500);
 		});
 	</script>
@@ -35,7 +35,7 @@ file_put_contents('UIDContainer.php', $Write);
 					<li class="nav-item"><a class="nav-link" aria-current="page" href="index.php">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="users.php">Usuários</a></li>
 					<li class="nav-item"><a class="nav-link" href="access.php">Acessos</a></li>
-					<li class="nav-item"><a class="nav-link active" href="registration.php">Cadastrar</a></li>
+					<li class="nav-item"><a class="nav-link active" href="createUser.php">Cadastrar</a></li>
 					<li class="nav-item"><a class="nav-link" href="readTag.php">Consultar</a></li>
 				</ul>
 			</div>
@@ -53,8 +53,8 @@ file_put_contents('UIDContainer.php', $Write);
 
 				<form action="func/createUser.php" method="post">
 					<div align="left" class="mb-3">
-						<label for="getUID" class="form-label">Tag</label>
-						<textarea name="tag" id="getUID" class="form-control" placeholder="Por favor, aproxime sua tag/cartão do leitor" rows="1" maxlength="8" minlength="8"></textarea>
+						<label for="getTag" class="form-label">Tag</label>
+						<textarea name="tag" id="getTag" class="form-control" placeholder="Por favor, aproxime sua tag/cartão do leitor" rows="1" maxlength="8" minlength="8"></textarea>
 					</div>
 
 					<div align="left" class="mb-3">
