@@ -1,6 +1,6 @@
 <?php
-$Write = "<?php $" . "UIDresult=''; " . "echo $" . "UIDresult;" . " ?>";
-file_put_contents('UIDContainer.php', $Write);
+$Write = "<?php $" . "tagResult='" . $tagResult . "'; " . "echo  $" . "tagResult;" . " ?>";
+file_put_contents('tagContainer.php', $Write);
 ?>
 
 <!DOCTYPE html>
@@ -10,9 +10,9 @@ file_put_contents('UIDContainer.php', $Write);
 	<?php include_once 'inc/head.html'; ?>
 	<script>
 		$(document).ready(function() {
-			$("#getUID").load("UIDContainer.php");
+			$("#getTag").load("tagContainer.php");
 			setInterval(function() {
-				$("#getUID").load("UIDContainer.php");
+				$("#getTag").load("tagContainer.php");
 			}, 500);
 		});
 	</script>
@@ -33,7 +33,8 @@ file_put_contents('UIDContainer.php', $Write);
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" aria-current="page" href="index.php">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="users.php">Usuários</a></li>
-					<li class="nav-item"><a class="nav-link" href="registration.php">Cadastrar</a></li>
+					<li class="nav-item"><a class="nav-link" href="access.php">Acessos</a></li>
+					<li class="nav-item"><a class="nav-link" href="createUser.php">Cadastrar</a></li>
 					<li class="nav-item"><a class="nav-link active" href="readTag.php">Consultar</a></li>
 				</ul>
 			</div>
@@ -44,7 +45,7 @@ file_put_contents('UIDContainer.php', $Write);
 
 	<h3 align="center" id="blink">Por favor, aproxime a tag/cartão do leitor</h3>
 
-	<p id="getUID" hidden></p>
+	<p id="getTag" hidden></p>
 
 	<br>
 
@@ -100,7 +101,7 @@ file_put_contents('UIDContainer.php', $Write);
 		clearInterval(myVar1);
 
 		function myTimer() {
-			var getID = document.getElementById("getUID").innerHTML;
+			var getID = document.getElementById("getTag").innerHTML;
 			oldID = getID;
 			if (getID != "") {
 				myVar1 = setInterval(myTimer1, 500);
@@ -110,7 +111,7 @@ file_put_contents('UIDContainer.php', $Write);
 		}
 
 		function myTimer1() {
-			var getID = document.getElementById("getUID").innerHTML;
+			var getID = document.getElementById("getTag").innerHTML;
 			if (oldID != getID) {
 				myVar = setInterval(myTimer, 500);
 				clearInterval(myVar1);
@@ -134,7 +135,7 @@ file_put_contents('UIDContainer.php', $Write);
 						document.getElementById("show_user_data").innerHTML = this.responseText;
 					}
 				};
-				xmlhttp.open("GET", "readTagData.php?id=" + str, true);
+				xmlhttp.open("GET", "readTagData.php?tag=" + str, true);
 				xmlhttp.send();
 			}
 		}

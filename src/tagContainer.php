@@ -1,0 +1,1 @@
+<?php $tagResult=''; echo  $tagResult; ?>

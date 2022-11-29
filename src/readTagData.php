@@ -1,22 +1,22 @@
 <?php
 require 'func/database.php';
-$id = null;
-if (!empty($_GET['id'])) {
-	$id = $_REQUEST['id'];
+$tag = null;
+if (!empty($_GET['tag'])) {
+	$tag = $_REQUEST['tag'];
 }
 
 $pdo = Database::connect();
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $sql = "SELECT * FROM users where tag = ?";
 $q = $pdo->prepare($sql);
-$q->execute(array($id));
+$q->execute(array($tag));
 $data = $q->fetch(PDO::FETCH_ASSOC);
 Database::disconnect();
 
 $msg = null;
 if (null == $data['name']) {
 	$msg = "A tag aproximada não está cadastrada!!!";
-	$data['tag'] = $id;
+	$data['tag'] = $tag;
 	$data['name'] = "--------";
 	$data['enrollment'] = "--------";
 	$data['email'] = "--------";

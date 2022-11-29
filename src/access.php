@@ -1,15 +1,10 @@
-<?php
-$Write = "<?php $" . "tagResult='" . $tagResult . "'; " . "echo  $" . "tagResult;" . " ?>";
-file_put_contents('tagContainer.php', $Write);
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <html>
 
 <head>
 	<?php include_once 'inc/head.html'; ?>
-	<title>Usuários : IFGAccess</title>
+	<title>Acessos : IFGAccess</title>
 </head>
 
 <body>
@@ -25,8 +20,8 @@ file_put_contents('tagContainer.php', $Write);
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" aria-current="page" href="index.php">Home</a></li>
-					<li class="nav-item"><a class="nav-link active" href="users.php">Usuários</a></li>
-					<li class="nav-item"><a class="nav-link" href="access.php">Acessos</a></li>
+					<li class="nav-item"><a class="nav-link" href="users.php">Usuários</a></li>
+					<li class="nav-item"><a class="nav-link active" href="access.php">Acessos</a></li>
 					<li class="nav-item"><a class="nav-link" href="createUser.php">Cadastrar</a></li>
 					<li class="nav-item"><a class="nav-link" href="readTag.php">Consultar</a></li>
 				</ul>
@@ -45,29 +40,24 @@ file_put_contents('tagContainer.php', $Write);
 				<thead>
 					<tr bgcolor="#157347" color="#FFFFFF">
 						<th>Nome</th>
-						<th>Tag</th>
 						<th>Matrícula</th>
-						<th>E-mail</th>
-						<th>Telefone</th>
-						<th>Ações</th>
+						<th>Sala</th>
+						<th>Checkin</th>
+						<th>Checkout</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php
 					include 'func/database.php';
 					$pdo = Database::connect();
-					$sql = 'SELECT * FROM users ORDER BY name ASC';
+					$sql = 'SELECT * FROM access A INNER JOIN users U ON U.id = A.user_id ORDER BY A.checkin DESC';
 					foreach ($pdo->query($sql) as $row) {
 						echo '<tr>';
 						echo '<td>' . $row['name'] . '</td>';
-						echo '<td>' . $row['tag'] . '</td>';
 						echo '<td>' . $row['enrollment'] . '</td>';
-						echo '<td>' . $row['email'] . '</td>';
-						echo '<td>' . $row['phone'] . '</td>';
-						echo '<td><a class="btn btn-success" href="editUser.php?id=' . $row['id'] . '">Edit</a>';
-						echo ' ';
-						echo '<a class="btn btn-danger" href="deleteUser.php?id=' . $row['id'] . '">Delete</a>';
-						echo '</td>';
+						echo '<td>' . $row['room'] . '</td>';
+						echo '<td>' . $row['checkin'] . '</td>';
+						echo '<td>' . $row['checkout'] . '</td>';
 						echo '</tr>';
 					}
 					Database::disconnect();
