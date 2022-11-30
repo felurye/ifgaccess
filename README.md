@@ -4,10 +4,16 @@ Repositório de código para a página Web do trabalho de conclusão de cursos d
 ## Configurações do projeto
 
 * PHP 7.4
+* Bootstrap 5.2
 * Postgres 13
 
-## Clonado o projeto
+## Clonando e configurando o projeto
 
 > git clone https://github.com/felurye/ifgaccess.git
 
 > docker-compose up --build -d
+
+
+## Montagem do protótipo
+
+<img src=".github/images/prototipo-fritzing.png" width="350">
