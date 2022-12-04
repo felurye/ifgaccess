@@ -9,12 +9,6 @@
 
 Repositório de código para a página Web do trabalho de conclusão de cursos do Instituto Federal de Goiás com o tema: IFGAccess: Sistema de Controle de Acesso Web Utilizando RFID e o Microcontrolador ESP8266 (ESP-01).
 
-
-## Montagem do protótipo
-
-<img src=".github/images/prototipo-fritzing.png" width="350">
-
-
 ### Documentação
 
 
