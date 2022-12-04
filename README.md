@@ -7,7 +7,7 @@
 
 ### Descrição 
 
-IFGAccess é um sistema _Web_ de controle de acesso por meio da tecnologia de radio frequência e o microcontrolador ESP8266. O sistema permite o cadastro e verificação de _tags_ por meio de uma página _Web_. Ademais, IFGAccess gera relatórios de acesso, permitindo maior controle e segurança em ambientes de alto valor agregado.
+IFGAccess é um sistema _Web_ de controle de acesso por meio da tecnologia de radio frequência (RFID) e um dispostivo computacional de baixo custo (microcontrolador ESP8266). IFGAccess permite o cadastro e verificação de _tags_ por meio de uma página _Web_. Ademais, IFGAccess gera relatórios de acesso, permitindo maior controle e segurança em ambientes de alto valor agregado.
 
 ### Documentação
 
