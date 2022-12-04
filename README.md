@@ -18,7 +18,7 @@ Para mais informações, consulte a [Wiki](https://github.com/felurye/ifgaccess/
 ```
 @monography{araujo2022,
 address={Formosa},
-author={Daniele da Silva Araújo},
+author={Daniele dos Santos Araújo},
 pages={},
 school={Instituto Federal de Goiás - Campus Formosa},
 title={Sistema Web para Controle de Acesso utilizando RFID e o Microcontrolador ESP82266},
