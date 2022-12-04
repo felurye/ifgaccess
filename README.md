@@ -25,3 +25,29 @@ Repositório de código para a página Web do trabalho de conclusão de cursos d
 ## Montagem do protótipo
 
 <img src=".github/images/prototipo-fritzing.png" width="350">
+
+
+### Documentação
+
+
+Para mais informações, consulte a [Wiki](https://github.com/felurye/ifgaccess/wiki).
+
+-- 
+
+### Como citar
+```
+@monography{araujo2022,
+address={Formosa},
+author={Daniele da Silva Araújo},
+pages={},
+school={Instituto Federal de Goiás - Campus Formosa},
+title={Sistema Web para Controle de Acesso utilizando RFID e o Microcontrolador ESP82266},
+type={Graduação em Tecnologia em Análise e Desenvolvimento de Sistemas},
+year={2022}}
+```
+
+-- 
+
+### Licença
+
+[Apache 2.0](https://github.com/felurye/ifgaccess/blob/master/LICENSE)
