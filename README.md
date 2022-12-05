@@ -22,7 +22,7 @@ author={Daniele dos Santos Araújo},
 pages={},
 school={Instituto Federal de Goiás - Campus Formosa},
 title={Sistema Web para Controle de Acesso utilizando RFID e o Microcontrolador ESP82266},
-type={Graduação em Tecnologia em Análise e Desenvolvimento de Sistemas},
+type={Curso Superior deTecnologia em Análise e Desenvolvimento de Sistemas},
 year={2022}}
 ```
  
