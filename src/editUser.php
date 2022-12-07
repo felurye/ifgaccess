@@ -47,17 +47,17 @@ Database::disconnect();
 
 					<div align="left" class="mb-3">
 						<label class="form-label">Matrícula</label>
-						<input name="enrollment" type="text" class="form-control" placeholder="" value="<?php echo $data['enrollment']; ?>" required>
+						<input name="enrollment" type="text" class="form-control" placeholder="" value="<?php echo $data['enrollment']; ?>" maxlength="14" required>
 					</div>
 
 					<div align="left" class="mb-3">
 						<label class="form-label">Email Address</label>
-						<input name="email" type="text" class="form-control" placeholder="" value="<?php echo $data['email']; ?>" required>
+						<input name="email" type="email" class="form-control" placeholder="" value="<?php echo $data['email']; ?>" required>
 					</div>
 
 					<div align="left" class="mb-3">
 						<label class="form-label">Telefone</label>
-						<input name="phone" type="text" class="form-control" placeholder="" value="<?php echo $data['phone']; ?>" required>
+						<input name="phone" type="tel" class="form-control" placeholder="" value="<?php echo $data['phone']; ?>"  maxlength="11" minlength="10" required>
 					</div>
 
 					<div>
