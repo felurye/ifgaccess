@@ -13,19 +13,6 @@ IFGAccess é um sistema _Web_ de controle de acesso por meio da tecnologia de ra
 
 Para mais informações, consulte a [Wiki](https://github.com/felurye/ifgaccess/wiki).
  
-
-### Como citar
-```
-@monography{araujo2022,
-address={Formosa},
-author={Daniele dos Santos Araújo},
-pages={},
-school={Instituto Federal de Goiás - Campus Formosa},
-title={Sistema Web para Controle de Acesso utilizando RFID e o Microcontrolador ESP82266},
-type={Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas},
-year={2022}}
-```
- 
 ### Licença
 
 [Apache 2.0](https://github.com/felurye/ifgaccess/blob/master/LICENSE)
