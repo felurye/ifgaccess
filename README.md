@@ -26,7 +26,6 @@ type={Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas},
 year={2022}}
 ```
  
-
 ### Licença
 
 [Apache 2.0](https://github.com/felurye/ifgaccess/blob/master/LICENSE)
