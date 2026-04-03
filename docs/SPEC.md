@@ -1,6 +1,6 @@
 # IFGAccess - Especificação do Sistema
 
-> Documento de referência para implementação baseada em especificação (Spec Driven Development).
+> Documento de referência para implementação baseada em especificação.
 > Define **o que** o sistema deve fazer: regras de negócio, contratos de dados, invariantes e critérios de aceite. Não prescreve tecnologia ou estrutura de código.
 
 ## Índice
