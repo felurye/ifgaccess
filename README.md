@@ -1,64 +1,54 @@
 # IFGAccess
 
-> Sistema Web para Controle de Acesso utilizando RFID e o Microcontrolador ESP8266
+> Sistema Web para Controle de Acesso utilizando RFID
 
 ![GitHub](https://img.shields.io/github/license/felurye/ifgaccess?color=red)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/felurye/ifgaccess)
 ![GitHub last commit](https://img.shields.io/github/last-commit/felurye/ifgaccess)
 ![GitHub contributors](https://img.shields.io/github/contributors/felurye/ifgaccess)
 
-## Descrição
+## Sobre o projeto
 
-IFGAccess é um sistema Web de controle de acesso por meio da tecnologia de radiofrequência (RFID) e um dispositivo computacional de baixo custo (microcontrolador ESP8266 / NodeMCU). O sistema permite o cadastro e a verificação de tags RFID por meio de uma interface Web, registra automaticamente entradas e saídas de usuários em salas, e impede o acesso simultâneo de mais de um usuário ao mesmo ambiente.
+IFGAccess é um sistema de controle de acesso que utiliza cartões e tags RFID para registrar entradas e saídas de usuários em salas. O gerenciamento é feito por uma interface Web, e o controle físico é realizado por um dispositivo de baixo custo instalado na porta do ambiente.
 
-O projeto foi desenvolvido como trabalho acadêmico no Instituto Federal de Goiás (IFG). A monografia completa está disponível em [`docs/monografia.pdf`](docs/monografia.pdf).
+O projeto foi desenvolvido como trabalho acadêmico no Instituto Federal de Goiás (IFG). A monografia está disponível em [`docs/monografia.pdf`](docs/monografia.pdf).
 
-Para detalhes técnicos, funcionalidades e guia de uso, consulte a **[Wiki do projeto](https://github.com/felurye/ifgaccess/wiki)**.
+## Funcionalidades
+
+- Cadastro de usuários vinculados a uma tag RFID
+- Registro automático de entrada e saída ao aproximar a tag do leitor
+- Bloqueio de acesso simultâneo - apenas um usuário por vez em cada sala
+- Histórico completo de acessos com data e hora
+- Consulta em tempo real da tag lida
 
 ## Como rodar
 
-**Pré-requisito:** [Docker](https://www.docker.com/get-started) e [Docker Compose](https://docs.docker.com/compose/install/) instalados.
+**Pré-requisito:** [Docker](https://www.docker.com/get-started) instalado.
 
 ```bash
-# 1. Clonar o repositório
 git clone https://github.com/felurye/ifgaccess.git
 cd ifgaccess
-
-# 2. Subir os containers (PHP + MySQL)
 docker-compose up --build -d
-
-# 3. Criar as tabelas no banco de dados
 docker exec -i ifgaccess-db mysql -u ifgaccess -proot ifgaccess < codes/db_create_tables.sql
 ```
 
 Acesse `http://localhost` no navegador.
 
-> Para configurar e gravar o firmware no ESP8266, veja [Clonar e rodar](https://github.com/felurye/ifgaccess/wiki/Clonar-e-rodar) na Wiki.
-
-## Contribuindo
-
-1. Faça um fork do repositório.
-2. Crie uma branch para sua feature ou correção:
-   ```bash
-   git checkout -b feature/minha-feature
-   ```
-3. Realize suas alterações e faça o commit:
-   ```bash
-   git commit -m "feat: adiciona minha feature"
-   ```
-4. Envie para o seu fork:
-   ```bash
-   git push origin feature/minha-feature
-   ```
-5. Abra um Pull Request descrevendo as alterações.
-
-Para reportar bugs ou sugerir melhorias, abra uma [issue](https://github.com/felurye/ifgaccess/issues).
+> Para configurar o dispositivo físico (ESP8266), veja o [guia de instalação](https://github.com/felurye/ifgaccess/wiki/Clonar-e-rodar) na Wiki.
 
 ## Documentação
 
-- [Wiki do projeto](https://github.com/felurye/ifgaccess/wiki)
-- [`docs/monografia.pdf`](docs/monografia.pdf) — monografia completa
-- [`docs/*.drawio`](docs/) — diagramas editáveis (abrir com [draw.io](https://app.diagrams.net/))
+- [Wiki do projeto](https://github.com/felurye/ifgaccess/wiki) - funcionalidades, arquitetura e guia de uso
+- [`docs/monografia.pdf`](docs/monografia.pdf) - monografia completa
+- [`docs/`](docs/) - diagramas do sistema (abrir com [draw.io](https://app.diagrams.net/))
+
+## Contribuindo
+
+1. Faça um fork e crie uma branch: `git checkout -b feature/minha-feature`
+2. Faça suas alterações e commit: `git commit -m "feat: descrição"`
+3. Abra um Pull Request.
+
+Para reportar bugs, abra uma [issue](https://github.com/felurye/ifgaccess/issues).
 
 ## Licença
 

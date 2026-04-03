@@ -1,15 +1,53 @@
-/node_modules
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
+# -------------------------
+# Variáveis de ambiente
+# -------------------------
 .env
-.env.backup
-.phpunit.result.cache
+.env.*
+!.env.example
+
+# -------------------------
+# Docker
+# -------------------------
 docker-compose.override.yml
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
-/.idea
-/.vscode
+
+# -------------------------
+# Aplicação PHP
+# -------------------------
+# Arquivo gerado em tempo de execução com a última tag lida
+src/tagContainer.php
+
+# -------------------------
+# Arduino / ESP8266
+# -------------------------
+# Artefatos de compilação gerados pela Arduino IDE
+build/
+*.elf
+*.bin
+*.hex
+*.map
+
+# -------------------------
+# IDEs e editores
+# -------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# -------------------------
+# Sistema operacional
+# -------------------------
+# Windows
+Thumbs.db
+desktop.ini
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# -------------------------
+# Claude Code
+# -------------------------
+.claude
