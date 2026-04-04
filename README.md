@@ -1,54 +1,146 @@
-# IFGAccess
+# IFGAccess 🔐
 
-> Sistema Web para Controle de Acesso utilizando RFID
+Protótipo de controle de acesso para laboratórios de informática do IFG - Campus Formosa, integrando IoT (ESP8266 + RFID) com uma aplicação web para gerenciamento e auditoria de acessos.
 
 ![GitHub](https://img.shields.io/github/license/felurye/ifgaccess?color=red)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/felurye/ifgaccess)
 ![GitHub last commit](https://img.shields.io/github/last-commit/felurye/ifgaccess)
 ![GitHub contributors](https://img.shields.io/github/contributors/felurye/ifgaccess)
 
-## Sobre o projeto
+## 📸 Demonstração
 
-IFGAccess é um sistema de controle de acesso que utiliza cartões e tags RFID para registrar entradas e saídas de usuários em salas. O gerenciamento é feito por uma interface Web, e o controle físico é realizado por um dispositivo de baixo custo instalado na porta do ambiente.
+<video src=".github/videos/cadastrar-tag.mp4" width="640" height="360" controls></video>
 
-O projeto foi desenvolvido como trabalho acadêmico no Instituto Federal de Goiás (IFG). A monografia está disponível em [`docs/monografia.pdf`](docs/monografia.pdf).
+## 🧠 Visão Geral
 
-## Funcionalidades
+O IFGAccess é uma solução que combina hardware e software para controlar o acesso a ambientes físicos utilizando autenticação por RFID.
 
-- Cadastro de usuários vinculados a uma tag RFID
-- Registro automático de entrada e saída ao aproximar a tag do leitor
-- Bloqueio de acesso simultâneo - apenas um usuário por vez em cada sala
-- Histórico completo de acessos com data e hora
-- Consulta em tempo real da tag lida
+O sistema permite:
 
-## Como rodar
+- Identificar usuários por cartão/tag RFID
+- Validar acessos em tempo real
+- Registrar logs de entrada
+- Gerenciar usuários via interface web
 
-**Pré-requisito:** [Docker](https://www.docker.com/get-started) instalado.
+## 🏗️ Arquitetura
+
+O sistema é dividido em três camadas principais:
+
+- **Dispositivo IoT (ESP8266 + RFID)** → leitura das tags
+- **Backend (PHP)** → validação e persistência
+- **Frontend** → interface de gerenciamento
+
+### 📊 Diagrama de Arquitetura
+
+```mermaid
+flowchart LR
+    A[Usuário aproxima cartão RFID] --> B["Leitor RFID (ESP8266)"]
+    B --> C[Envia requisição HTTP]
+    C --> D[Backend PHP]
+    D --> E{Usuário autorizado?}
+
+    E -->|Sim| F[Libera acesso]
+    E -->|Não| G[Bloqueia acesso]
+
+    D --> H[(MySQL)]
+    H --> D
+
+    D --> I[Interface Web]
+    I --> J[Administrador gerencia acessos]
+```
+
+## ⚙️ Tecnologias Utilizadas
+
+### 🔌 Hardware
+
+- ESP8266 (NodeMCU)
+- Módulo RFID
+
+### 💻 Software
+
+| Tecnologia  | Versão     |
+| ----------- | ---------- |
+| PHP         | 7.4        |
+| MySQL       | latest     |
+| Bootstrap   | 5.2.3      |
+| jQuery      | 3.x        |
+| Docker      | 20+        |
+| Arduino IDE | 1.8+ / 2.x |
+
+## 🔌 Integração com Hardware
+
+O ESP8266 é responsável por:
+
+1. Ler o UID da tag RFID
+2. Enviar uma requisição HTTP para o backend
+3. Receber a resposta (autorizado / negado)
+4. Acionar o controle físico (ex: fechadura, LED, buzzer)
+
+## ▶️ Como Executar o Projeto
+
+### 📋 Pré-requisitos
+
+- Docker
+
+### 🚀 Rodando localmente
 
 ```bash
 git clone https://github.com/felurye/ifgaccess.git
 cd ifgaccess
+cp .env.example .env   # ajuste as senhas conforme necessário
 docker-compose up --build -d
 ```
 
-Acesse `http://localhost` no navegador.
+Acesse `http://localhost` no navegador e faça login com as credenciais definidas em `.env` (`ADMIN_USER` / `ADMIN_PASS`).
 
-> Para configurar o dispositivo físico (ESP8266), veja o [guia de instalação](https://github.com/felurye/ifgaccess/wiki/Clonar-e-rodar) na Wiki.
+Para configurar o dispositivo físico (ESP8266), veja o [guia de instalação](https://github.com/felurye/ifgaccess/wiki/Clonar-e-rodar).
 
-## Documentação
+## 📡 Fluxo de Funcionamento
+
+1. Usuário aproxima o cartão RFID
+2. ESP8266 lê o UID
+3. Envia requisição para o backend
+4. Backend valida no banco de dados
+5. Retorna resposta (permitido/negado)
+6. Ação é registrada no sistema
+
+## ✅ Funcionalidades
+
+- Cadastro de usuários
+- Registro de tags RFID
+- Controle de acesso em tempo real
+- Logs de entrada e saída
+- Interface web administrativa
+
+## 📖 Documentação
 
 - [Wiki do projeto](https://github.com/felurye/ifgaccess/wiki) - funcionalidades, arquitetura e guia de uso
 - [`docs/monografia.pdf`](docs/monografia.pdf) - monografia completa
 - [`docs/`](docs/) - diagramas do sistema (abrir com [draw.io](https://app.diagrams.net/))
 
-## Contribuindo
+## 🤝 Contribuição
 
-1. Faça um fork e crie uma branch: `git checkout -b feature/minha-feature`
-2. Faça suas alterações e commit: `git commit -m "feat: descrição"`
-3. Abra um Pull Request.
+Contribuições são bem-vindas!
 
-Para reportar bugs, abra uma [issue](https://github.com/felurye/ifgaccess/issues).
+1. Fork o projeto
+2. Crie uma branch:
 
-## Licença
+```bash
+git checkout -b minha-feature
+```
 
-Distribuído sob a licença [Apache 2.0](https://github.com/felurye/ifgaccess/blob/master/LICENSE).
+3. Commit:
+
+```bash
+git commit -m "feat: minha nova feature"
+```
+
+4. Push:
+
+```bash
+git push origin minha-feature
+```
+
+## 📄 Licença
+
+Este projeto está sob a licença Apache 2.0.
