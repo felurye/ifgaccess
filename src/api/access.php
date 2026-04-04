@@ -1,6 +1,6 @@
 <?php
-require 'database.php';
-require 'tag.php';
+require_once __DIR__ . '/../lib/Database.php';
+require_once __DIR__ . '/../lib/Tag.php';
 date_default_timezone_set('America/Sao_Paulo');
 
 $tag  = isset($_POST['tagResult']) ? trim($_POST['tagResult']) : '';

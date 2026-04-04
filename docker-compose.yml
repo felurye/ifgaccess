@@ -18,14 +18,15 @@ services:
     container_name: ifgaccess-db
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./src/scripts/db_create_tables.sql:/docker-entrypoint-initdb.d/db_create_tables.sql:ro
     environment:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_PASSWORD: ${DB_PASS}
       MYSQL_USER: ${DB_USER}
     # Descomente para acessar o banco diretamente do host (somente em desenvolvimento)
-    ports:
-      - "3306:3306"
+    #ports:
+    #  - "3306:3306"
 
 volumes:
   mysql_data:

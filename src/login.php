@@ -1,5 +1,5 @@
 <?php
-require_once 'func/auth.php';
+require_once 'lib/Auth.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

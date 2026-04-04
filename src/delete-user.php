@@ -1,6 +1,6 @@
 <?php
-require_once 'func/auth.php';
-require_once 'func/database.php';
+require_once 'lib/Auth.php';
+require_once 'lib/Database.php';
 requireAuth();
 
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
@@ -25,6 +25,8 @@ if (empty($rows)) {
     exit;
 }
 $userName = $rows[0]['name'];
+
+$activePage = 'users';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,28 +35,7 @@ $userName = $rows[0]['name'];
     <title>Excluir : IFGAccess</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">
-                <img src="img/white-logo.png" alt="Logo" width="100" class="d-inline-block align-text-top">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="users.php">Usuários</a></li>
-                    <li class="nav-item"><a class="nav-link" href="access.php">Acessos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="createUser.php">Cadastrar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="readTag.php">Consultar</a></li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include_once 'inc/navbar.php'; ?>
 
     <br>
 
@@ -67,7 +48,7 @@ $userName = $rows[0]['name'];
                     Deseja excluir o usuário <strong><?php echo e($userName); ?></strong>?<br>
                     Esta ação não pode ser desfeita.
                 </p>
-                <form action="deleteUser.php" method="post">
+                <form method="post">
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <button type="submit" class="btn btn-danger">Sim, excluir</button>
                     <a class="btn btn-secondary" href="users.php">Cancelar</a>

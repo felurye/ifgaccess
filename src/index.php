@@ -1,6 +1,8 @@
 <?php
-require_once 'func/auth.php';
+require_once 'lib/Auth.php';
 requireAuth();
+
+$activePage = 'home';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -9,28 +11,7 @@ requireAuth();
     <title>Home : IFGAccess</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">
-                <img src="img/white-logo.png" alt="Logo" width="100" class="d-inline-block align-text-top">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="users.php">Usuários</a></li>
-                    <li class="nav-item"><a class="nav-link" href="access.php">Acessos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="createUser.php">Cadastrar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="readTag.php">Consultar</a></li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include_once 'inc/navbar.php'; ?>
 
     <br>
     <h3 class="text-center">Bem-vindo ao IFGAccess</h3>

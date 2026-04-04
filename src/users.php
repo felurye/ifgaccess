@@ -1,9 +1,11 @@
 <?php
-require_once 'func/auth.php';
-require_once 'func/database.php';
+require_once 'lib/Auth.php';
+require_once 'lib/Database.php';
 requireAuth();
 
 $rows = Database::query('SELECT * FROM users ORDER BY name ASC');
+
+$activePage = 'users';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,28 +14,7 @@ $rows = Database::query('SELECT * FROM users ORDER BY name ASC');
     <title>Usuários : IFGAccess</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">
-                <img src="img/white-logo.png" alt="Logo" width="100" class="d-inline-block align-text-top">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="users.php">Usuários</a></li>
-                    <li class="nav-item"><a class="nav-link" href="access.php">Acessos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="createUser.php">Cadastrar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="readTag.php">Consultar</a></li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include_once 'inc/navbar.php'; ?>
 
     <br>
 
@@ -62,8 +43,8 @@ $rows = Database::query('SELECT * FROM users ORDER BY name ASC');
                             <td><?php echo e($row['email']); ?></td>
                             <td><?php echo e($row['phone']); ?></td>
                             <td>
-                                <a class="btn btn-success btn-sm" href="editUser.php?id=<?php echo (int) $row['id']; ?>">Editar</a>
-                                <a class="btn btn-danger btn-sm" href="deleteUser.php?id=<?php echo (int) $row['id']; ?>">Excluir</a>
+                                <a class="btn btn-success btn-sm" href="edit-user.php?id=<?php echo (int) $row['id']; ?>">Editar</a>
+                                <a class="btn btn-danger btn-sm" href="delete-user.php?id=<?php echo (int) $row['id']; ?>">Excluir</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

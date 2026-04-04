@@ -29,7 +29,6 @@ O projeto foi desenvolvido como trabalho acadÃªmico no Instituto Federal de GoiÃ
 git clone https://github.com/felurye/ifgaccess.git
 cd ifgaccess
 docker-compose up --build -d
-docker exec -i ifgaccess-db mysql -u ifgaccess -proot ifgaccess < codes/db_create_tables.sql
 ```
 
 Acesse `http://localhost` no navegador.

@@ -1,6 +1,6 @@
 <?php
-require_once 'func/auth.php';
-require_once 'func/database.php';
+require_once __DIR__ . '/../lib/Auth.php';
+require_once __DIR__ . '/../lib/Database.php';
 requireAuth();
 
 $tag = isset($_GET['tag']) ? trim($_GET['tag']) : '';
@@ -25,10 +25,10 @@ if (empty($data)) {
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <?php include_once 'inc/head.html'; ?>
+    <?php include_once __DIR__ . '/../inc/head.html'; ?>
 </head>
 <body>
-    <table width="452" border="1" style="border-color: #157347;" class="mx-auto" cellpadding="0" cellspacing="1" style="padding: 2px">
+    <table width="452" border="1" style="border-color: #157347;" class="mx-auto" cellpadding="0" cellspacing="1">
         <tr>
             <td height="40" class="text-center" style="background-color: #157347;">
                 <strong style="color: #fff;">Dados do Usuário</strong>

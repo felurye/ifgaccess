@@ -1,6 +1,8 @@
 <?php
-require_once 'func/auth.php';
+require_once 'lib/Auth.php';
 requireAuth();
+
+$activePage = 'read-tag';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -9,28 +11,7 @@ requireAuth();
     <title>Consultar : IFGAccess</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">
-                <img src="img/white-logo.png" alt="Logo" width="100" class="d-inline-block align-text-top">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="users.php">Usuários</a></li>
-                    <li class="nav-item"><a class="nav-link" href="access.php">Acessos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="createUser.php">Cadastrar</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="readTag.php">Consultar</a></li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include_once 'inc/navbar.php'; ?>
 
     <br>
 
@@ -41,7 +22,7 @@ requireAuth();
     <br>
 
     <div id="show_user_data">
-        <table width="452" border="1" style="border-color: #157347;" class="mx-auto" cellpadding="0" cellspacing="1" style="padding: 2px">
+        <table width="452" border="1" style="border-color: #157347;" class="mx-auto" cellpadding="0" cellspacing="1">
             <tr>
                 <td height="40" class="text-center" style="background-color: #157347;">
                     <strong style="color: #fff;">Dados do Usuário</strong>
@@ -65,7 +46,7 @@ requireAuth();
         var lastTag = '';
 
         setInterval(function () {
-            $.get('getLastTag.php', function (data) {
+            $.get('api/last-tag.php', function (data) {
                 var tag = data.trim();
                 document.getElementById('currentTag').innerHTML = tag;
                 if (tag !== '' && tag !== lastTag) {
@@ -77,7 +58,7 @@ requireAuth();
 
         function showUser(tag) {
             if (tag === '') return;
-            fetch('readTagData.php?tag=' + encodeURIComponent(tag))
+            fetch('api/tag-data.php?tag=' + encodeURIComponent(tag))
                 .then(function (r) { return r.text(); })
                 .then(function (html) {
                     document.getElementById('show_user_data').innerHTML = html;

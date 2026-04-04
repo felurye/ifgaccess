@@ -1,1 +1,0 @@
-<?php $tagResult=''; echo  $tagResult; ?>
