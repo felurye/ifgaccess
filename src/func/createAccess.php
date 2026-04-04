@@ -1,61 +1,54 @@
 <?php
-
 require 'database.php';
+require 'tag.php';
 date_default_timezone_set('America/Sao_Paulo');
 
-$t = time();
-$dateNow = date("Y-m-d H:i:s", $t);
+$tag  = isset($_POST['tagResult']) ? trim($_POST['tagResult']) : '';
+$room = isset($_POST['room'])      ? trim($_POST['room'])      : '';
 
-$tag = null;
-if (!empty($_POST['tagResult'])) {
-	$tag = $_REQUEST['tagResult'];
-	$room = $_REQUEST['room'];
+if ($tag === '' || $room === '') {
+    http_response_code(400);
+    echo 'NOK';
+    exit;
 }
 
-$Write = "<?php $" . "tagResult='" . $tag . "'; " . "echo  $" . "tagResult;" . " ?>";
-file_put_contents('../tagContainer.php', $Write);
+saveTag($tag);
 
-Database::connect();
-$userResult = Database::query("SELECT * FROM users where tag = '$tag'");
+$dateNow = date('Y-m-d H:i:s');
 
-// A tag não possui cadastro
+$userResult = Database::query('SELECT * FROM users WHERE tag = ?', [$tag]);
+
 if (empty($userResult)) {
-	echo "NOK";
-	Database::disconnect();
-	return;
+    echo 'NOK';
+    exit;
 }
 
 $userId = $userResult[0]['id'];
 
-$checkinAnotherUserResult = Database::query("SELECT * FROM access where room = '$room' AND user_id != '$userId' AND checkout is NULL ORDER BY checkin DESC");
-// Já possui um checkin de outro usuário
-if (!empty($checkinAnotherUserResult)) {
-	echo "Wait for another user to checkout";
-	return;
+$checkinAnotherUser = Database::query(
+    'SELECT id FROM access WHERE room = ? AND user_id != ? AND checkout IS NULL ORDER BY checkin DESC',
+    [$room, $userId]
+);
+
+if (!empty($checkinAnotherUser)) {
+    echo 'Wait for another user to checkout';
+    exit;
 }
 
-$checkinResult = Database::query("SELECT * FROM access where user_id = '$userId' AND checkout is NULL ORDER BY checkin DESC");
+$checkinResult = Database::query(
+    'SELECT * FROM access WHERE user_id = ? AND checkout IS NULL ORDER BY checkin DESC',
+    [$userId]
+);
 
-// A tag possui cadastro e não possui checkin pedente de checkout
 if (empty($checkinResult)) {
-	echo "Checkin";
-
-	$dataCheckIn = [
-		'user_id' => $userId,
-		'checkin' => $dateNow,
-		'room' => $room,
-	];
-
-	Database::create("access", $dataCheckIn);
-	Database::disconnect();
-	return;
+    echo 'Checkin';
+    Database::create('access', [
+        'user_id' => $userId,
+        'checkin' => $dateNow,
+        'room'    => $room,
+    ]);
+    exit;
 }
 
-// A tag possui cadastro e checkin pedente de checkout
-echo "Checkout";
-$dataCheckout = [
-	'checkout' => $dateNow,
-];
-
-Database::update("access", $dataCheckout, ['id', $checkinResult[0]['id']]);
-Database::disconnect();
+echo 'Checkout';
+Database::update('access', ['checkout' => $dateNow], ['id', $checkinResult[0]['id']]);

@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 services:
   php:
     build: .
@@ -8,18 +8,24 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    links:
+    env_file:
+      - .env
+    depends_on:
       - mysql
 
   mysql:
     image: mysql:latest
     container_name: ifgaccess-db
     volumes:
-      - /var/lib/mysql
+      - mysql_data:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: ifgaccess
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_PASSWORD: root
-      MYSQL_USER: ifgaccess
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASS}
+      MYSQL_USER: ${DB_USER}
+    # Descomente para acessar o banco diretamente do host (somente em desenvolvimento)
     ports:
       - "3306:3306"
+
+volumes:
+  mysql_data:

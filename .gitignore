@@ -13,8 +13,9 @@ docker-compose.override.yml
 # -------------------------
 # Aplicação PHP
 # -------------------------
-# Arquivo gerado em tempo de execução com a última tag lida
+# Arquivos gerados em tempo de execução
 src/tagContainer.php
+src/tag.txt
 
 # -------------------------
 # Arduino / ESP8266

@@ -1,5 +1,5 @@
 <?php
-$tagResult = $_POST['tagResult'];
+require 'tag.php';
 
-$Write = "<?php $" . "tagResult='" . $tagResult . "'; " . "echo  $" . "tagResult;" . " ?>";
-file_put_contents('../tagContainer.php', $Write);
+$tag = isset($_POST['tagResult']) ? trim($_POST['tagResult']) : '';
+saveTag($tag);
