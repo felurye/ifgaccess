@@ -7,10 +7,6 @@ Protótipo de controle de acesso para laboratórios de informática do IFG - Cam
 ![GitHub last commit](https://img.shields.io/github/last-commit/felurye/ifgaccess)
 ![GitHub contributors](https://img.shields.io/github/contributors/felurye/ifgaccess)
 
-## 📸 Demonstração
-
-<video src=".github/videos/cadastrar-tag.mp4" width="640" height="360" controls></video>
-
 ## 🧠 Visão Geral
 
 O IFGAccess é uma solução que combina hardware e software para controlar o acesso a ambientes físicos utilizando autenticação por RFID.
@@ -21,6 +17,8 @@ O sistema permite:
 - Validar acessos em tempo real
 - Registrar logs de entrada
 - Gerenciar usuários via interface web
+
+[Demo](https://www.youtube.com/watch?v=Y_Lu1g6e-cI).
 
 ## 🏗️ Arquitetura
 
